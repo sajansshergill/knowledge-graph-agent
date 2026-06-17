@@ -123,7 +123,7 @@ Wraps the full agent graph as a production MCP endpoint. Customer tools (Slack b
 ## Project Structure
 
 ```
-ekga/
+knowledge-graph-agent/
 ├── src/
 │   ├── ingestion/
 │   │   ├── connectors/
