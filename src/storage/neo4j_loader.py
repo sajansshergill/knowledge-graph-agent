@@ -357,7 +357,7 @@ class Neo4jLoader:
         """BLOCKS, IN_EPIC from JiraIssue objects."""
         # Detect JiraIssue by duck-typing
         try:
-            from .connectors import JiraIssue
+            from ..ingestion.connectors import JiraIssue
         except ImportError:
             return 0
 
@@ -403,7 +403,7 @@ class Neo4jLoader:
     def _merge_confluence_parent_relationships(self, raw_docs: list) -> int:
         """PARENT_OF from ConfluencePage.parent_id."""
         try:
-            from .connectors import ConfluencePage
+            from ..ingestion.connectors import ConfluencePage
         except ImportError:
             return 0
 

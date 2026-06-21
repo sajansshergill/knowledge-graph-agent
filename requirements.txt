@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+pydantic
+requests
+urllib3
+psycopg2-binary
+neo4j
+datasketch
+spacy
+pdfplumber
+Pillow
+pytesseract
+google-cloud-aiplatform
+google-cloud-pubsub
+google-cloud-storage
+google-cloud-bigquery
+pytest

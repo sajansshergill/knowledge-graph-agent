@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EKGA | Enterprise Knowledge Graph Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="shell">
+      <header class="hero">
+        <nav class="nav">
+          <div class="brand">
+            <div class="logo-mark">E</div>
+            <div>
+              <p class="eyebrow">Enterprise Knowledge Graph Agent</p>
+              <h1>EKGA Control Room</h1>
+            </div>
+          </div>
+          <div class="status-pill" id="apiStatus">
+            <span class="pulse"></span>
+            Checking API
+          </div>
+        </nav>
+
+        <section class="hero-grid">
+          <div class="hero-copy">
+            <p class="tagline">Google Cloud GenAI FDE Demo</p>
+            <h2>Enterprise memory, retrieved as a graph and answered with evidence.</h2>
+            <p class="subcopy">
+              EKGA connects siloed knowledge across Confluence, Jira, Slack, and PDFs. It combines
+              AlloyDB vector search, Neo4j graph traversal, multi-agent orchestration, and observability
+              into a production-ready answer layer.
+            </p>
+            <div class="hero-badges">
+              <span>AlloyDB pgvector</span>
+              <span>Neo4j graph</span>
+              <span>Vertex AI ready</span>
+              <span>MCP API</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <span class="metric-label">Business Impact</span>
+            <strong>Find decisions, owners, blockers, and runbooks in one grounded workflow.</strong>
+            <div class="mini-graph">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </section>
+      </header>
+
+      <section class="value-grid">
+        <article>
+          <span>01</span>
+          <strong>Cross-source reasoning</strong>
+          <p>Moves beyond text chunks by following document, author, ticket, label, and entity relationships.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <strong>Enterprise trust</strong>
+          <p>Every answer includes citations, retrieval path, faithfulness score, and per-agent trace.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <strong>Field-ready architecture</strong>
+          <p>Clean API surface, local demo mode, Docker config, and cloud service boundaries.</p>
+        </article>
+      </section>
+
+      <main class="workspace">
+        <section class="query-card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">Ask the knowledge graph</p>
+              <h3>Query Console</h3>
+            </div>
+            <select id="topK" aria-label="Top K">
+              <option value="3">Top 3</option>
+              <option value="5" selected>Top 5</option>
+              <option value="10">Top 10</option>
+            </select>
+          </div>
+
+          <textarea
+            id="queryInput"
+            placeholder="Example: Why was the auth service migrated off PostgreSQL?"
+          ></textarea>
+
+          <div class="actions">
+            <button id="askButton">
+              <span>Ask EKGA</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12m0 0-5-5m5 5-5 5" /></svg>
+            </button>
+            <button class="ghost" id="clearButton">Clear</button>
+          </div>
+
+          <div class="suggestions" id="suggestions"></div>
+
+          <div class="demo-note">
+            <span>Demo mode</span>
+            <p>Uses curated enterprise knowledge when live AlloyDB/Neo4j stores are not configured.</p>
+          </div>
+        </section>
+
+        <section class="answer-card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">Agent output</p>
+              <h3>Grounded Answer</h3>
+            </div>
+            <span class="route-badge" id="routeBadge">idle</span>
+          </div>
+
+          <div class="empty-state" id="emptyState">
+            <div class="orb"></div>
+            <h4>Ready when you are.</h4>
+            <p>Ask a question to see the answer, citations, metrics, and agent trace.</p>
+          </div>
+
+          <div class="result hidden" id="result">
+            <p class="answer" id="answerText"></p>
+
+            <div class="insight-grid">
+              <div class="insight">
+                <span>Retrieval Path</span>
+                <strong id="retrievalPath">-</strong>
+              </div>
+              <div class="insight">
+                <span>Latency</span>
+                <strong id="latency">-</strong>
+              </div>
+              <div class="insight">
+                <span>Faithfulness</span>
+                <strong id="faithfulness">-</strong>
+              </div>
+              <div class="insight">
+                <span>Sources</span>
+                <strong id="sourceCount">-</strong>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Citations</div>
+              <div class="citations" id="citations"></div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Agent Trace</div>
+              <div class="timeline" id="timeline"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="citationTemplate">
+      <article class="citation">
+        <div>
+          <strong></strong>
+          <p></p>
+        </div>
+        <a target="_blank" rel="noreferrer">Open</a>
+      </article>
+    </template>
+
+    <template id="timelineTemplate">
+      <article class="hop">
+        <span class="dot"></span>
+        <div>
+          <strong></strong>
+          <p></p>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
